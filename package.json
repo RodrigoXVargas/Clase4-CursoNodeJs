@@ -1,0 +1,35 @@
+{
+  "name": "clase4",
+  "version": "1.0.0",
+  "description": "clase 4 del curso de node js de midu",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodrigoXVargas/CursoNodeJs.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "express",
+    "api"
+  ],
+  "author": "Rodrigo Vargas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RodrigoXVargas/CursoNodeJs/issues"
+  },
+  "homepage": "https://github.com/RodrigoXVargas/CursoNodeJs#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.18.2",
+    "servor": "4.0.2",
+    "zod": "3.22.4"
+  }
+}
