@@ -1,17 +1,21 @@
-const express = require('express')
-const crypto = require('node:crypto')
-const cors = require('cors')
-const movies = require('./movies.json')
-const { validateMovie, validateParcialMovie } = require('./schemas/moviesSchemas')
+import express, { json } from 'express'
+import { randomUUID } from 'node:crypto'
+import cors from 'cors'
+import { validateMovie, validateParcialMovie } from './schemas/moviesSchemas.js'
 
+import { readJSON } from './utils.js'
+
+const movies = readJSON('./movies.json')
+
+// Como obtener las peliculas del json
+//import fs from 'node:fs'
+//const movies = JSON.parse(fs.readFileSync('./movies.json', 'utf-8'))
 
 const app = express()
 
-const PORT = process.env.PORT ?? 1234
-
 app.disable('x-powered-by')
 
-app.use(express.json())
+app.use(json())
 
 app.use(cors({
     origin: (origin, callback) => {
@@ -94,7 +98,7 @@ app.post('/movies', (req, res) => {
 
 
     const newMovie = {
-        id: crypto.randomUUID(),
+        id: randomUUID(),
         ...result.data
     }
 
@@ -139,6 +143,8 @@ app.patch('/movies/:id', (req, res) => {
 
     return res.json(updateMovie)
 })
+
+const PORT = process.env.PORT ?? 1234
 
 app.listen(PORT, () => {
     console.log(`server listening on port http://localhost:${PORT}`)
